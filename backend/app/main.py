@@ -36,15 +36,15 @@ async def startup_event():
     # Inicializar datos de ejemplo
     db = SessionLocal()
     try:
-        # Crear usuario de prueba si no existe
-        existing_user = db.query(models.User).filter(models.User.username == "admin").first()
+        # Crear usuario de demo si no existe
+        existing_user = db.query(models.User).filter(models.User.username == "demo").first()
         if not existing_user:
-            admin_user = models.User(
-                username="admin",
-                email="admin@example.com",
-                hashed_password=get_password_hash("admin123")
+            demo_user = models.User(
+                username="demo",
+                email="demo@example.com",
+                hashed_password=get_password_hash("demo123")
             )
-            db.add(admin_user)
+            db.add(demo_user)
             db.commit()
         
         # Inicializar datos de ejemplo

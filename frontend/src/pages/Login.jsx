@@ -27,7 +27,28 @@ const Login = ({ onLogin }) => {
       onLogin(access_token);
     } catch (err) {
       console.error('Error de login:', err.response?.data || err.message);
-      setError('Credenciales inválidas. Intenta con admin/admin123');
+      setError('Credenciales inválidas. Usa las credenciales de demo: demo/demo123');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDemoLogin = async () => {
+    setLoading(true);
+    setError('');
+    
+    const demoCredentials = {
+      username: 'demo',
+      password: 'demo123'
+    };
+
+    try {
+      const response = await axios.post('http://localhost:8000/auth/login', demoCredentials);
+      const { access_token } = response.data;
+      onLogin(access_token);
+    } catch (err) {
+      console.error('Error de login demo:', err.response?.data || err.message);
+      setError('Error al conectar con el servidor. Intenta nuevamente.');
     } finally {
       setLoading(false);
     }
@@ -84,7 +105,7 @@ const Login = ({ onLogin }) => {
             </div>
           )}
 
-          <div>
+          <div className="space-y-3">
             <button
               type="submit"
               disabled={loading}
@@ -92,12 +113,35 @@ const Login = ({ onLogin }) => {
             >
               {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </button>
+            
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-gray-500">o</span>
+              </div>
+            </div>
+            
+            <button
+              type="button"
+              onClick={handleDemoLogin}
+              disabled={loading}
+              className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+            >
+              {loading ? 'Accediendo...' : '🚀 Login como Demo'}
+            </button>
           </div>
 
-          <div className="text-center text-sm text-gray-600">
-            <p>Credenciales de prueba:</p>
-            <p>Usuario: <span className="font-mono bg-gray-100 px-1 rounded">admin</span></p>
-                <p>Contraseña: <span className="font-mono bg-gray-100 px-1 rounded">admin123</span></p>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="text-center">
+              <h3 className="text-sm font-medium text-blue-800 mb-2">💡 Credenciales de Demo</h3>
+              <p className="text-xs text-blue-600 mb-2">Este es un proyecto de portafolio con datos ficticios</p>
+              <div className="space-y-1 text-sm">
+                <p>Usuario: <span className="font-mono bg-blue-100 text-blue-800 px-2 py-1 rounded">demo</span></p>
+                <p>Contraseña: <span className="font-mono bg-blue-100 text-blue-800 px-2 py-1 rounded">demo123</span></p>
+              </div>
+            </div>
           </div>
         </form>
       </div>
