@@ -49,7 +49,7 @@ const Reports = () => {
       setLoading(true);
       const response = await dataAPI.getReports();
       setReports(response.data);
-    } catch (err) {
+    } catch {
       setError('Error al actualizar los reportes');
     } finally {
       setLoading(false);
