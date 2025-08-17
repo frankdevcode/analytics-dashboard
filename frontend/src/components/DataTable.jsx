@@ -8,7 +8,7 @@ const DataTable = ({ data }) => {
 
   // Filtrar datos basado en el término de búsqueda
   const filteredData = useMemo(() => {
-    if (!data) return [];
+    if (!data || !Array.isArray(data)) return [];
     return data.filter(item =>
       Object.values(item).some(value =>
         value.toString().toLowerCase().includes(searchTerm.toLowerCase())
@@ -65,7 +65,7 @@ const DataTable = ({ data }) => {
     );
   };
 
-  if (!data || data.length === 0) {
+  if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div className="text-center py-4 text-gray-500">
         No hay datos disponibles

@@ -31,7 +31,7 @@ const Dashboard = () => {
           sales: salesRes.data,
           users: usersRes.data,
           categories: categoriesRes.data,
-          reports: reportsRes.data
+          reports: reportsRes.data.reports || []
         });
       } catch (err) {
         setError('Error al cargar los datos');

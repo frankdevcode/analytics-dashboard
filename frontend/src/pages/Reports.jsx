@@ -12,7 +12,7 @@ const Reports = () => {
       try {
         setLoading(true);
         const response = await dataAPI.getReports();
-        setReports(response.data);
+        setReports(response.data.reports || []);
       } catch (err) {
         setError('Error al cargar los reportes');
         console.error('Error fetching reports:', err);

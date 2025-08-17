@@ -26,7 +26,8 @@ const Login = ({ onLogin }) => {
       const { access_token } = response.data;
       onLogin(access_token);
     } catch (err) {
-      setError('Credenciales inválidas. Intenta con admin/admin');
+      console.error('Error de login:', err.response?.data || err.message);
+      setError('Credenciales inválidas. Intenta con admin/admin123');
     } finally {
       setLoading(false);
     }
@@ -96,7 +97,7 @@ const Login = ({ onLogin }) => {
           <div className="text-center text-sm text-gray-600">
             <p>Credenciales de prueba:</p>
             <p>Usuario: <span className="font-mono bg-gray-100 px-1 rounded">admin</span></p>
-            <p>Contraseña: <span className="font-mono bg-gray-100 px-1 rounded">admin</span></p>
+                <p>Contraseña: <span className="font-mono bg-gray-100 px-1 rounded">admin123</span></p>
           </div>
         </form>
       </div>
