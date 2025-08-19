@@ -25,7 +25,7 @@ Un dashboard de analytics moderno construido con React y FastAPI que incluye vis
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/frankdevcode/analytics-dashboard
 cd analytics-dashboard
 ```
 
@@ -63,8 +63,8 @@ El frontend estará disponible en: `http://localhost:5173`
 
 Para acceder al dashboard, utiliza las siguientes credenciales:
 
-- **Usuario:** `admin`
-- **Contraseña:** `admin123`
+- **Usuario:** `demo`
+- **Contraseña:** `demo123`
 
 ## 📁 Estructura del Proyecto
 
@@ -173,12 +173,8 @@ Para desplegar en producción:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📝 Licencia
+## 📞 Por:
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## 📞 Contacto
-
-Tu Nombre - tu.email@ejemplo.com
+Franklaza
 
 Link del Proyecto: [https://github.com/tu-usuario/analytics-dashboard](https://github.com/tu-usuario/analytics-dashboard)
